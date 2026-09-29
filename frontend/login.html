@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Kewa AI</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="auth-container">
+        <!-- Logo -->
+        <div class="logo-box">K</div>
+        <div class="text-center" style="margin-bottom: 25px;">
+            <h1 style="font-size: 22px; font-weight: bold;">Kewa <span class="text-cyan">AI</span></h1>
+            <p class="text-muted" style="margin-top: 4px;">Smarter Tools &bull; Better Tomorrow</p>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <h2 style="font-size: 18px; font-weight: bold;">Welcome <span class="text-blue">Back</span></h2>
+            <p class="text-muted">Sign in to access your account</p>
+        </div>
+
+        <form id="loginForm" onsubmit="handleLogin(event)">
+            <!-- Email -->
+            <div class="input-group">
+                <label>Email Address</label>
+                <div class="input-wrapper">
+                    <i class="fa-regular fa-envelope"></i>
+                    <input type="email" id="loginEmail" class="custom-input" placeholder="nilesh@wefly.com" required>
+                </div>
+            </div>
+
+            <!-- Password -->
+            <div class="input-group">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                    <label style="margin: 0;">Password</label>
+                    <a href="#" style="font-size: 11px; color: #3b82f6; text-decoration: none;">Forgot Password?</a>
+                </div>
+                <div class="input-wrapper">
+                    <i class="fa-solid fa-lock"></i>
+                    <input type="password" id="loginPassword" class="custom-input" placeholder="••••••••" required style="padding-right: 40px;">
+                    <i class="fa-regular fa-eye-slash toggle-pass" onclick="togglePassword('loginPassword', this)"></i>
+                </div>
+            </div>
+
+            <!-- Remember me -->
+            <div class="flex-row">
+                <label class="checkbox-container">
+                    <input type="checkbox" style="accent-color: #3b82f6;"> Remember me
+                </label>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn-glow">
+                <span>SIGN IN</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </button>
+        </form>
+
+        <div class="divider">OR CONTINUE WITH</div>
+
+        <!-- Social Buttons -->
+        <div class="social-grid">
+            <button class="social-btn" onclick="socialLogin('google')"><i class="fa-brands fa-google" style="color: #ea4335;"></i> Google</button>
+            <button class="social-btn" onclick="socialLogin('apple')"><i class="fa-brands fa-apple"></i> Apple</button>
+            <button class="social-btn" onclick="socialLogin('github')"><i class="fa-brands fa-github"></i> GitHub</button>
+        </div>
+
+        <div class="footer-link">
+            Don't have an account? <a href="signup.html">Create Account</a>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>

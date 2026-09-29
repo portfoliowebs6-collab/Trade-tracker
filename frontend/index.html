@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kewa P&L Tracker - Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Header -->
+        <header style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid #1e293b; padding-bottom: 12px;">
+            <div>
+                <h1 style="font-size: 20px;">Kewa <span class="text-emerald">P&L</span></h1>
+                <p style="font-size: 11px; color: #94a3b8;">Track &bull; Analyze &bull; Grow</p>
+            </div>
+            <button onclick="logout()" style="background:#1e293b; color:#f43f5e; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; font-size:12px;">Logout</button>
+        </header>
+
+        <!-- DASHBOARD TAB -->
+        <div id="tab-dashboard" class="tab-content">
+            <div class="card-bg">
+                <p style="color: #94a3b8; font-size: 13px;">Total P&L</p>
+                <h2 id="totalPnlVal" style="font-size: 32px; margin-top: 5px;" class="text-emerald">&#8377;0</h2>
+            </div>
+
+            <!-- Add Trade Form -->
+            <div class="card-bg">
+                <h3 style="font-size: 14px; margin-bottom: 12px;" class="text-emerald">Add Trade</h3>
+                <form id="addTradeForm" onsubmit="handleFormSubmit(event)" style="display: flex; flex-direction: column; gap: 10px;">
+                    <input type="date" id="tradeDate" class="input-bg" required>
+                    <input type="text" id="tradeInstrument" placeholder="Instrument (e.g. NIFTY)" class="input-bg" required>
+                    <select id="tradeType" class="input-bg">
+                        <option value="Buy">Buy</option>
+                        <option value="Sell">Sell</option>
+                    </select>
+                    <input type="number" id="tradeAmount" placeholder="Profit / Loss Amount (&#8377;)" class="input-bg" required>
+                    <button type="submit" class="btn-primary">Add Trade</button>
+                </form>
+            </div>
+
+            <!-- Recent Trades -->
+            <div class="card-bg">
+                <h3 style="font-size: 14px; margin-bottom: 10px;">Recent Trades</h3>
+                <div id="tradesListContainer">
+                    <p style="font-size: 12px; color: #64748b; text-align: center;">No trades found.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SETTINGS TAB -->
+        <div id="tab-settings" class="tab-content hidden">
+            <div class="card-bg">
+                <h3>Settings</h3>
+                <p style="font-size: 12px; color: #94a3b8; margin-top: 10px;">Connected with Firebase & MongoDB.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <nav class="nav-bar">
+        <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn active">
+            <i class="fa-solid fa-house"></i><span>Dashboard</span>
+        </button>
+        <button onclick="switchTab('settings')" id="nav-settings" class="nav-btn">
+            <i class="fa-solid fa-gear"></i><span>Settings</span>
+        </button>
+    </nav>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+    <script src="auth.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
